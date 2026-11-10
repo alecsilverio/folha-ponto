@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Folha de Ponto | SMS Três Lagoas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topo">
+  <img src="img/logo-sms.jpg" alt="Secretaria Municipal de Saúde - Prefeitura de Três Lagoas">
+</header>
+<div class="faixa"></div>
+
+<main>
+  <h1>Folha de Ponto <small>jornada de 6h/dia</small></h1>
+
+  <section class="card kpis">
+    <div class="kpi">Banco de horas<b id="banco">0h00</b></div>
+    <div class="kpi">Folgas disponíveis<b id="folgas">0</b></div>
+    <div class="kpi">Total trabalhado<b id="total">0h00</b></div>
+  </section>
+
+  <section class="card">
+    <div class="row">
+      <label>Data <input type="date" id="data"></label>
+      <label>Tipo
+        <select id="tipo">
+          <option value="trab">Dia trabalhado</option>
+          <option value="folga">Folga (usar banco)</option>
+        </select>
+      </label>
+      <label id="lbE">Entrada <input type="time" id="entrada"></label>
+      <label id="lbS">Saída <input type="time" id="saida"></label>
+      <button onclick="salvar()">Salvar</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row" style="margin-bottom:10px">
+      <label>Mês <input type="month" id="mes" onchange="render()"></label>
+      <button class="sec" onclick="exportCSV()">Exportar CSV</button>
+      <button class="sec" onclick="backup()">Backup JSON</button>
+      <label>Restaurar <input type="file" id="arq" accept=".json" onchange="restaurar(event)"></label>
+    </div>
+    <table>
+      <thead><tr><th>Data</th><th>Entrada</th><th>Saída</th><th>Trabalhado</th><th>Saldo</th><th></th></tr></thead>
+      <tbody id="lista"></tbody>
+    </table>
+  </section>
+</main>
+
+<footer>Secretaria Municipal de Saúde - SMS · Cada dia melhor!</footer>
+<script src="js/app.js"></script>
+</body>
+</html>
